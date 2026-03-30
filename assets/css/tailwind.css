@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+
+@theme {
+    --color-green1: #99FE00;
+    --color-green2: #19CC61;
+    --color-green3: #19914A;
+    --color-green4: #065136;
+    --color-green5: #002417;
+    --color-dark-shade2: #1F382F;
+    --color-dark-shade3: #29473C;
+    --color-dark-shade4: #759187;
+    --color-dark-shade5: #A7BDB5;
+    --color-dark-shade6: #E6E9E8;
+    --font-farro: "Farro", sans-serif;
+}
+
+.inter-tite{
+    font-family: "Inter Tight", sans-serif;
+}
+.anton{
+    font-family: "Anton", sans-serif;
+}
+
+
+
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1535px;
+    width: 100%;
+    margin: auto;
+    padding-inline: 20px;
+}
+
+@media (max-width:640px) {
+    .container {
+    padding-inline: 16px;
+}
+}
+
+
+
+@layer base {
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.section-padding {
+    padding-block: 136px;
+}
+@media (max-width:1024px) {
+    .section-padding {
+    padding-block: 100px;
+}
+}
+@media (max-width:640px) {
+    .section-padding {
+    padding-block: 60px;
+}
+}
+
+
+
+/* =========================
+   CSS RESET / BASE
+========================= */
+
+/* Box sizing reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin & padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* HTML & body */
+body {
+  height: 100%;
+  font-family: "Inter Tight", sans-serif;
+}
+
+
+
+/* Remove link underline */
+a {
+  text-decoration: none;
+}
+
+/* Images responsive */
+img, picture, video, canvas {
+  max-width: 100%;
+  display: block;
+}
+
+/* Form elements inherit font */
+input, button, textarea, select {
+  font: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+/* Button cursor */
+button {
+  cursor: pointer;
+}
+
+/* Table reset */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+p {
+  margin: 0;
+}
