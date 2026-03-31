@@ -115,3 +115,9 @@ cards.forEach(card => {
       gsap.to(num,     { color: 'rgba(255,255,255,0.5)',     duration: 0.35 });
     });
   });
+
+
+
+
+
+  //feature image

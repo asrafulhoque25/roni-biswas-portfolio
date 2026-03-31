@@ -205,3 +205,16 @@ background-size: cover;
  /* service section start  */
 
  .svc-bg { will-change: opacity, transform; }
+
+
+/* design process end */
+
+
+
+/* design process start */
+.design-process{
+    background-image: url(../images/design-process.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* design process end */
