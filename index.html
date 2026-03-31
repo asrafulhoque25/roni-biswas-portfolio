@@ -1,14 +1,468 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Roni Biswas</title>
     <link rel="stylesheet" href="assets/dist/style.css">
 </head>
+
 <body>
-    <h1 class="text-3xl text-dark-shade3 font-black">Wellcome TO Tailwindcss Website</h1>
-    <h1>Wellcome TO Tailwindcss Website</h1>
-    <h1 class="text-amber-950 text-5xl">Wellcome TO Tailwindcss Website</h1>
+
+    <!-- ═══════════════════════════
+       NAVBAR
+  ═══════════════════════════ -->
+    <nav id="navbar" class="py-6 lg:py-10 fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300">
+        <div class="container">
+            <div class="flex items-center justify-between gap-5">
+
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-[10px] shrink-0">
+                    <img src="assets/images/nav-book-demo.png" alt="book-demo" class="img-fluid">
+                    <span class="text-lg lg:text-xl text-[#B2B3BD] font-medium">Roni Biswas</span>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <ul class="hidden md:flex items-center gap-8">
+                    <li><a href="#"
+                            class="text-[16px] lg:text-[18px] text-white hover:text-[#B2B3BD] transition-colors duration-200">About</a>
+                    </li>
+                    <li><a href="#"
+                            class="text-[16px] lg:text-[18px] text-white hover:text-[#B2B3BD] transition-colors duration-200">Work</a>
+                    </li>
+                </ul>
+
+                <!-- Desktop CV + Mobile Hamburger -->
+                <div class="flex items-center gap-4">
+                    <a href="#"
+                        class="hidden md:block text-[16px] lg:text-[18px] text-white hover:text-[#B2B3BD] transition-colors duration-200">
+                        Download CV
+                    </a>
+
+                    <!-- Hamburger -->
+                    <button id="hamburger"
+                        class="md:hidden relative flex flex-col justify-center items-center w-8 h-8 focus:outline-none"
+                        aria-label="Toggle menu">
+                        <span
+                            class="ham-top absolute block w-6 h-[1.5px] bg-white transition-all duration-300 -translate-y-[7px]"></span>
+                        <span class="ham-mid absolute block w-6 h-[1.5px] bg-white transition-all duration-300"></span>
+                        <span
+                            class="ham-bot absolute block w-4 h-[1.5px] bg-white transition-all duration-300 translate-y-[7px]"></span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+            <div class="container pt-5 pb-6 flex flex-col gap-5 border-t border-white/10 mt-5">
+                <a href="#" class="text-[18px] text-white hover:text-[#B2B3BD] transition-colors duration-200">About</a>
+                <a href="#" class="text-[18px] text-white hover:text-[#B2B3BD] transition-colors duration-200">Work</a>
+                <a href="#" class="text-[18px] text-white hover:text-[#B2B3BD] transition-colors duration-200">Download
+                    CV</a>
+            </div>
+        </div>
+    </nav>
+    <!-- navbar end -->
+
+
+    <!-- BANNER-->
+    <section class="banner pt-32 md:pt-36 lg:pt-25 pb-10 lg:pb-15">
+        <div class="container">
+
+            <!-- Banner Grid -->
+            <div class="banner-grid border-t border-b border-[#26283A]">
+
+                <!-- Left Content -->
+                <div class="banner-content max-w-full lg:max-w-176.5 w-full pt-6 lg:pt-0">
+                    <div class="flex items-center gap-2">
+                        <div class="h-[2px] w-8 bg-[#BFC0C7]"></div>
+                        <span class="text-[#BFC0C7] text-[28px] md:text-[36px] lg:text-[48px]">Hello , I'm</span>
+                    </div>
+                    <h1 class="anton text-[64px] md:text-[88px] lg:text-[116px] text-white leading-[100%] my-4 lg:my-5">
+                        Roni Biswas
+                    </h1>
+                    <p class="text-[#BFC0C7] text-[22px] md:text-[28px] lg:text-[36px]">DIGITAL DESIGNER</p>
+                    <p
+                        class="text-[#BFC0C7] text-[16px] md:text-[20px] lg:text-[24px] mt-6 lg:mt-10 max-w-lg lg:max-w-none">
+                        Crafting bold, uncompromising digital experiences through minimalist brutalism and raw aesthetic
+                        power
+                    </p>
+                </div>
+
+                <!-- Right Image -->
+                <div class="flex justify-end sm:border-l sm:border-[#26283A] lg:pl-15.5 smpl-6 sm:py-12 py-6">
+                    <img src="assets/images/banner.png" class="img-fluid" alt="banner image">
+                </div>
+
+            </div>
+
+            <!-- Bottom Row: Scroll + Buttons -->
+            <div class="mt-6 md:mt-8">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-3 sm:justify-between">
+
+                    <!-- Scroll Down -->
+                    <div class="reveal" style="animation-delay:0.8s">
+                        <span class="text-sm md:text-base lg:text-xl uppercase font-light text-gray2">
+                            Scroll Down <span class="scroll-arrow">↓</span>
+                        </span>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div
+                        class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto reveal-late">
+
+                        <!-- Outlined -->
+                        <button class="btn relative overflow-hidden flex items-center gap-3
+                           w-full sm:w-auto lg:min-w-111.5 px-5 py-3 rounded-full cursor-pointer
+                           border border-white/70 text-white/70
+                           hover:border-white/50 hover:text-white hover:bg-white/[0.04]
+                           active:scale-95 transition-all duration-300">
+                            <span class="flex-1 text-left text-[15px] md:text-[16px] lg:text-[18px] font-medium">View My
+                                Work</span>
+                            <span class="arrow w-[30px] h-[30px] rounded-full bg-white/10 border border-white/15
+                           flex items-center justify-center shrink-0 transition-all duration-300">
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_32_184)">
+                                        <path
+                                            d="M16 0C7.17731 0 0 7.17731 0 16C0 24.8227 7.17731 32 16 32C24.8227 32 32 24.8227 32 16C32 7.17731 24.8227 0 16 0ZM20.9427 16.9427L14.276 23.6093C14.016 23.8693 13.6747 24 13.3333 24C12.992 24 12.6506 23.8693 12.3906 23.6093C11.8693 23.088 11.8693 22.2453 12.3906 21.724L18.1147 16L12.3907 10.276C11.8694 9.75469 11.8694 8.912 12.3907 8.39069C12.912 7.86938 13.7547 7.86938 14.276 8.39069L20.9427 15.0574C21.464 15.5787 21.464 16.4213 20.9427 16.9427Z"
+                                            fill="white" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_32_184">
+                                            <rect width="32" height="32" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </span>
+                        </button>
+
+                        <!-- Solid White -->
+                        <button class="btn relative overflow-hidden flex items-center gap-3
+                           w-full sm:w-auto sm:shrink-0 px-5 py-3 rounded-full cursor-pointer
+                           bg-[#fff] hover:bg-[#BFC0C6] text-black hover:text-dark
+                           text-[15px] md:text-[16px] lg:text-[18px] font-medium
+                           hover:-translate-y-0.5 active:scale-95 transition-all duration-300">
+                            <div class="shimmer"></div>
+                            <span class="flex-1 text-left relative z-10">See My Case Study</span>
+                            <span class="arrow w-[30px] h-[30px] rounded-full bg-black/10
+                           flex items-center justify-center shrink-0 relative z-10 transition-all duration-300">
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_32_191)">
+                                        <path
+                                            d="M16 0C7.17731 0 0 7.17731 0 16C0 24.8227 7.17731 32 16 32C24.8227 32 32 24.8227 32 16C32 7.17731 24.8227 0 16 0ZM20.9427 16.9427L14.276 23.6093C14.016 23.8693 13.6747 24 13.3333 24C12.992 24 12.6506 23.8693 12.3906 23.6093C11.8693 23.088 11.8693 22.2453 12.3906 21.724L18.1147 16L12.3907 10.276C11.8694 9.75469 11.8694 8.912 12.3907 8.39069C12.912 7.86938 13.7547 7.86938 14.276 8.39069L20.9427 15.0574C21.464 15.5787 21.464 16.4213 20.9427 16.9427Z"
+                                            fill="#1925AA" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_32_191">
+                                            <rect width="32" height="32" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+
+                            </span>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- banner end -->
+
+
+
+    <!-- design manifesto start -->
+    <section class="bg-offwhite section-padding">
+        <div class="container">
+            <h2
+                class="anton text-[48px] md:text-[64px] lg:text-[88px] text-primary leading-[100%] mb-6 lg:mb-25 uppercase text-center">
+                Design Manifesto
+            </h2>
+
+
+
+            <!-- Cards Grid -->
+
+            <!-- Cards Grid: 1 col mobile → 3 col desktop -->
+            <div class="grid grid-cols-1 md:grid-cols-3 items-stretch">
+
+                <!-- ── Card 01 ── -->
+                <div
+                    class="manifesto-card  relative flex flex-col px-7 md:px-9 pt-10 pb-11 cursor-default transition-[background] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
+
+                    <!-- Top row: icon + number -->
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="">
+                            <img src="assets/images/design-logo-1.svg" alt="design logo" class="img-fluid">
+                        </div>
+                        <span
+                            class="anton md:text-[72px] sm:text-[62px] text-[48px] text-primary leading-[100%]">01</span>
+                    </div>
+
+                    <!-- Content -->
+                    <div
+                        class="card-content flex-1 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
+                        <h3 class="anton uppercase text-primary text-[36px] leading-[124%] md:mb-6 mb-4">
+                            Raw Authenticity</h3>
+                        <p class="text-[#44445a] text-[15px] leading-[1.75]">
+                            Strip away the unnecessary. Embrace the uncomfortable. Challenge conventions through stark
+                            minimalism and brutalist principles that demand attention and respect the user's
+                            intelligence.
+                        </p>
+                    </div>
+                    <div class="card-spacer h-0 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"></div>
+                </div>
+
+                <!-- ── Card 02 ── -->
+                <div
+                    class="manifesto-card is-active relative flex flex-col px-7 md:px-9 pt-10 pb-11 cursor-default transition-[background] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
+
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="">
+                            <img src="assets/images/design-logo-2.svg" alt="design logo" class="img-fluid">
+                        </div>
+                        <span
+                            class="anton md:text-[72px] sm:text-[62px] text-[48px] text-primary leading-[100%]">02</span>
+                    </div>
+
+                    <div
+                        class="card-content flex-1 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
+                        <h3 class="anton uppercase text-primary text-[36px] leading-[124%] md:mb-6 mb-4">
+                            Functional Beauty</h3>
+                        <p class="text-[#44445a] text-[15px] leading-[1.75]">
+                            Every element serves a purpose. No decoration without function. The grid is visible, the
+                            structure is honest, and the typography speaks louder than any ornament ever could.
+                        </p>
+                    </div>
+                    <div class="card-spacer h-0 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"></div>
+                </div>
+
+                <!-- ── Card 03 ── -->
+                <div
+                    class="manifesto-card relative flex flex-col px-7 md:px-9 pt-10 pb-11 cursor-default transition-[background] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
+
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="">
+                            <img src="assets/images/design-logo-3.svg" alt="design logo" class="img-fluid">
+                        </div>
+                        <span
+                            class="anton md:text-[72px] sm:text-[62px] text-[48px] text-primary leading-[100%]">03</span>
+                    </div>
+
+                    <div
+                        class="card-content flex-1 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
+                        <h3 class="anton uppercase text-primary text-[36px] leading-[124%] md:mb-6 mb-4">
+                            Uncompromising Vision</h3>
+                        <p class="text-[#44445a] text-[15px] leading-[1.75]">
+                            Design that doesn't apologize. Interfaces that challenge users to think differently. Bold
+                            choices that prioritize substance over superficial aesthetics while maintaining rigorous
+                            attention to detail.
+                        </p>
+                    </div>
+                    <div class="card-spacer h-0 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"></div>
+                </div>
+
+
+            </div>
+    </section>
+    <!-- design manifesto end -->
+
+
+
+    <!-- service section start -->
+    <section class="service bg-[linear-gradient(120deg,#01261A_-17.02%,#000_104.22%)] section-padding overflow-hidden">
+        <div class="container">
+
+
+            <h2
+                class="anton text-[48px] md:text-[64px] lg:text-[88px] text-white leading-[100%] mb-6 lg:mb-25 uppercase text-start">
+                Services
+            </h2>
+
+
+            <!-- List -->
+            <ul class="border-t border-white/[.13]">
+
+                <!-- 01 · UI Design -->
+                <li class="svc-row relative overflow-hidden cursor-pointer border-b border-[#4D5F5A] opacity-0 translate-y-5"
+                    data-img="assets/images/service1.webp">
+
+                    <!-- BG image (opacity + scale animated by GSAP) -->
+                    <div class="svc-bg absolute inset-0 bg-cover bg-center opacity-0 scale-[1.08] z-0"></div>
+
+                    <!-- Dark gradient overlay -->
+                    <div class="svc-overlay absolute inset-0 z-[1] opacity-0"
+                        style="background: linear-gradient(to right, rgba(10,28,20,.75) 0%, rgba(10,28,20,.42) 50%, rgba(10,28,20,.72) 100%)">
+                    </div>
+
+                    <!-- Shimmer sweep -->
+                    <div class="svc-shimmer absolute top-0 -left-full w-3/5 h-full z-[3] opacity-0"
+                        style="background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.055) 50%, transparent 100%)">
+                    </div>
+
+                    <!-- Content grid -->
+                    <div class="relative z-[2] grid items-center gap-x-8 md:py-14 sm:py-8 py-6 px-4
+            grid-cols-[40px_1fr] 
+            sm:grid-cols-[56px_1fr] 
+            md:grid-cols-[80px_1fr_minmax(0,565px)]">
+                        <span
+                            class="svc-num anton text-base sm:text-[24px] text-[#D9DDDB] pt-1 transition-colors duration-300">01</span>
+                        <span class="svc-name anton font-black uppercase text-[#D9DCDB]   duration-500 tracking-[2px]"
+                            style="font-size: clamp(28px, 3.5vw, 56px)">UI Design</span>
+                        <!-- Desktop desc -->
+                        <span
+                            class="hidden md:block text-base md:text-xl lg:text-2xl text-[#BFC3C1] transition-colors duration-300">
+                            Creating bold, minimalist interfaces that prioritize function and challenge aesthetic norms
+                        </span>
+                        <!-- Mobile/tablet desc -->
+                        <span
+                            class="col-start-2 block md:hidden text-[12px] font-light leading-relaxed text-white/60 mt-1 transition-colors duration-300">
+                            Creating bold, minimalist interfaces that prioritize function and challenge aesthetic norms
+                        </span>
+                    </div>
+                </li>
+
+                <!-- 02 · UX Research -->
+                <li class="svc-row relative overflow-hidden cursor-pointer border-b border-[#4D5F5A] opacity-0 translate-y-5"
+                    data-img="assets/images/service2.webp">
+                    <div class="svc-bg absolute inset-0 bg-cover bg-center opacity-0 scale-[1.08] z-0"></div>
+                    <div class="svc-overlay absolute inset-0 z-[1] opacity-0"
+                        style="background: linear-gradient(to right, rgba(10,28,20,.75) 0%, rgba(10,28,20,.42) 50%, rgba(10,28,20,.72) 100%)">
+                    </div>
+                    <div class="svc-shimmer absolute top-0 -left-full w-3/5 h-full z-[3] opacity-0"
+                        style="background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.055) 50%, transparent 100%)">
+                    </div>
+                    <div class="relative z-[2] grid items-center gap-x-8 md:py-14 sm:py-8 py-6 px-4
+            grid-cols-[40px_1fr] 
+            sm:grid-cols-[56px_1fr] 
+            md:grid-cols-[80px_1fr_minmax(0,565px)]">
+                        <span
+                            class="svc-num anton text-base sm:text-[24px] text-[#D9DDDB] pt-1 transition-colors duration-300">02</span>
+                        <span class="svc-name anton font-black uppercase text-[#D9DCDB]   duration-500 tracking-[2px]"
+                            style="font-size: clamp(28px, 3.5vw, 56px)">UX Research</span>
+                        <span
+                            class="hidden md:block text-base md:text-xl lg:text-2xl text-[#BFC3C1] transition-colors duration-300">
+                            Deep user insights that inform unconventional design decisions and validate bold choices
+                        </span>
+                        <span
+                            class="col-start-2 block md:hidden text-[12px] font-light leading-relaxed text-white/60 mt-1 transition-colors duration-300">
+                            Deep user insights that inform unconventional design decisions and validate bold choices
+                        </span>
+                    </div>
+                </li>
+
+                <!-- 03 · Motion Design -->
+                <li class="svc-row relative overflow-hidden cursor-pointer border-b border-[#4D5F5A] opacity-0 translate-y-5"
+                    data-img="assets/images/service3.webp">
+                    <div class="svc-bg absolute inset-0 bg-cover bg-center opacity-0 scale-[1.08] z-0"></div>
+                    <div class="svc-overlay absolute inset-0 z-[1] opacity-0"
+                        style="background: linear-gradient(to right, rgba(10,28,20,.75) 0%, rgba(10,28,20,.42) 50%, rgba(10,28,20,.72) 100%)">
+                    </div>
+                    <div class="svc-shimmer absolute top-0 -left-full w-3/5 h-full z-[3] opacity-0"
+                        style="background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.055) 50%, transparent 100%)">
+                    </div>
+                    <div class="relative z-[2] grid items-center gap-x-8 md:py-14 sm:py-8 py-6 px-4
+            grid-cols-[40px_1fr] 
+            sm:grid-cols-[56px_1fr] 
+            md:grid-cols-[80px_1fr_minmax(0,565px)]">
+                        <span
+                            class="svc-num anton text-base sm:text-[24px] text-[#D9DDDB] pt-1 transition-colors duration-300">03</span>
+                        <span class="svc-name anton font-black uppercase text-[#D9DCDB]   duration-500 tracking-[2px]"
+                            style="font-size: clamp(28px, 3.5vw, 56px)">Motion Design</span>
+                        <span
+                            class="hidden md:block text-base md:text-xl lg:text-2xl text-[#BFC3C1] transition-colors duration-300">
+                            Purposeful animation that enhances usability without compromising minimalist principles
+                        </span>
+                        <span
+                            class="col-start-2 block md:hidden text-[12px] font-light leading-relaxed text-white/60 mt-1 transition-colors duration-300">
+                            Purposeful animation that enhances usability without compromising minimalist principles
+                        </span>
+                    </div>
+                </li>
+
+                <!-- 04 · Brand Strategy -->
+                <li class="svc-row relative overflow-hidden cursor-pointer border-b border-[#4D5F5A] opacity-0 translate-y-5"
+                    data-img="assets/images/service4.webp">
+                    <div class="svc-bg absolute inset-0 bg-cover bg-center opacity-0 scale-[1.08] z-0"></div>
+                    <div class="svc-overlay absolute inset-0 z-[1] opacity-0"
+                        style="background: linear-gradient(to right, rgba(10,28,20,.75) 0%, rgba(10,28,20,.42) 50%, rgba(10,28,20,.72) 100%)">
+                    </div>
+                    <div class="svc-shimmer absolute top-0 -left-full w-3/5 h-full z-[3] opacity-0"
+                        style="background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.055) 50%, transparent 100%)">
+                    </div>
+                    <div class="relative z-[2] grid items-center gap-x-8 md:py-14 sm:py-8 py-6 px-4
+            grid-cols-[40px_1fr] 
+            sm:grid-cols-[56px_1fr] 
+            md:grid-cols-[80px_1fr_minmax(0,565px)]">
+                        <span
+                            class="svc-num anton text-base sm:text-[24px] text-[#D9DDDB] pt-1 transition-colors duration-300">04</span>
+                        <span class="svc-name anton font-black uppercase text-[#D9DCDB]   duration-500 tracking-[2px]"
+                            style="font-size: clamp(28px, 3.5vw, 56px)">Brand Strategy</span>
+                        <span
+                            class="hidden md:block text-base md:text-xl lg:text-2xl text-[#BFC3C1] transition-colors duration-300">
+                            Developing authentic brand identities that embrace raw aesthetics and honest communication
+                        </span>
+                        <span
+                            class="col-start-2 block md:hidden text-[12px] font-light leading-relaxed text-white/60 mt-1 transition-colors duration-300">
+                            Developing authentic brand identities that embrace raw aesthetics and honest communication
+                        </span>
+                    </div>
+                </li>
+
+                <!-- 05 · Art Direction -->
+                <li class="svc-row relative overflow-hidden cursor-pointer border-b border-[#4D5F5A] opacity-0 translate-y-5"
+                    data-img="assets/images/service5.webp">
+                    <div class="svc-bg absolute inset-0 bg-cover bg-center opacity-0 scale-[1.08] z-0"></div>
+                    <div class="svc-overlay absolute inset-0 z-[1] opacity-0"
+                        style="background: linear-gradient(to right, rgba(10,28,20,.75) 0%, rgba(10,28,20,.42) 50%, rgba(10,28,20,.72) 100%)">
+                    </div>
+                    <div class="svc-shimmer absolute top-0 -left-full w-3/5 h-full z-[3] opacity-0"
+                        style="background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.055) 50%, transparent 100%)">
+                    </div>
+                    <div class="relative z-[2] grid items-center gap-x-8 md:py-14 sm:py-8 py-6 px-4
+            grid-cols-[40px_1fr] 
+            sm:grid-cols-[56px_1fr] 
+            md:grid-cols-[80px_1fr_minmax(0,565px)]">
+                        <span
+                            class="svc-num anton text-base sm:text-[24px] text-[#D9DDDB] pt-1 transition-colors duration-300">05</span>
+                        <span class="svc-name anton font-black uppercase text-[#D9DCDB]   duration-500 tracking-[2px]"
+                            style="font-size: clamp(28px, 3.5vw, 56px)">Art Direction</span>
+                        <span
+                            class="hidden md:block text-base md:text-xl lg:text-2xl text-[#BFC3C1] transition-colors duration-300">
+                            Guiding visual narratives with uncompromising vision and brutalist sensibilities
+                        </span>
+                        <span
+                            class="col-start-2 block md:hidden text-[12px] font-light leading-relaxed text-white/60 mt-1 transition-colors duration-300">
+                            Guiding visual narratives with uncompromising vision and brutalist sensibilities
+                        </span>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </section>
+    <!-- service section end -->
+
+
+
+    <!-- FEATURED WORK section start -->
+     <section class="featured-work section-padding">
+        <div class="container">
+
+        </div>
+     </section>
+    <!-- FEATURED WORK section end -->
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
+
 </html>
