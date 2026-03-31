@@ -63,15 +63,32 @@
 
 // ── Manifesto cards hover effect ──
 
+// ── Manifesto cards hover effect ──
+
 const cards = document.querySelectorAll('.manifesto-card');
+
+let activeCard = document.querySelector('.manifesto-card.is-active') || cards[0];
+
+function activateCard(newCard) {
+  if (newCard === activeCard) return;
+
+  const oldCard = activeCard;
+  activeCard = newCard;
+
+  // Step 1: Expand new card first
+  newCard.classList.add('is-active');
+
+  // Step 2: After expand transition completes, collapse old card
+  setTimeout(() => {
+    oldCard.classList.remove('is-active');
+  }, 500); // match your transition duration (500ms)
+}
 
 cards.forEach(card => {
   card.addEventListener('mouseenter', () => {
-    cards.forEach(c => c.classList.remove('is-active'));
-    card.classList.add('is-active');
+    activateCard(card);
   });
 });
-
 
 //service 
 
@@ -120,4 +137,121 @@ cards.forEach(card => {
 
 
 
-  //feature image
+  // counter section
+
+
+let animated = false;
+
+function startAnimation() {
+  if (animated) return;
+  animated = true;
+
+  const statCards = document.querySelectorAll('.stat-card'); // ← renamed
+
+  gsap.to(statCards, {
+    opacity: 1,
+    y: 0,
+    duration: 0.65,
+    ease: 'power3.out',
+    stagger: 0.13,
+  });
+
+  document.querySelectorAll('.counter').forEach((el, i) => {
+    const target = parseInt(el.dataset.target);
+    const pad    = parseInt(el.dataset.pad || 0);
+
+    const obj = { val: 0 };
+    gsap.to(obj, {
+      val: target,
+      duration: 2,
+      ease: 'power2.out',
+      delay: 0.2 + i * 0.1,
+      onUpdate() {
+        const v = Math.round(obj.val);
+        el.textContent = pad ? String(v).padStart(pad, '0') : v;
+      },
+      onComplete() {
+        el.textContent = pad ? String(target).padStart(pad, '0') : target;
+      }
+    });
+  });
+}
+
+const statsSection = document.getElementById('stats'); // ← renamed
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      startAnimation();
+      observer.disconnect();
+    }
+  });
+}, { threshold: 0.2 });
+
+observer.observe(statsSection);
+
+
+
+
+
+//design philosophy
+
+(function initDesignPhilosophySection() {
+
+    const section = document.getElementById('philosophy-section');
+    if (!section) return;
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const q    = (sel) => section.querySelector(sel);
+    const qAll = (sel) => section.querySelectorAll(sel);
+
+    /* Title */
+    gsap.to(q('.design-title'), {
+      scrollTrigger: { trigger: section, start: 'top 80%', once: true },
+      opacity: 1, y: 0,
+      duration: 1, ease: 'power4.out',
+    });
+
+    /* Cards stagger */
+    gsap.to(qAll('.process-card'), {
+      scrollTrigger: { trigger: section, start: 'top 75%', once: true },
+      opacity: 1, y: 0,
+      duration: 0.8, stagger: 0.15,
+      ease: 'power3.out',
+    });
+
+  })();
+
+
+
+
+
+
+  
+
+//smooth scroll
+
+// Initialize Lenis
+const lenis = new Lenis({
+  duration: 1.4,     
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+  direction: 'vertical', 
+  gestureDirection: 'vertical',
+  smoothWheel: true,
+  wheelMultiplier: 1.3, 
+  infinite: false,
+});
+
+
+lenis.on('scroll', ScrollTrigger.update);
+
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000);
+});
+
+gsap.ticker.lagSmoothing(0);
+
+
+

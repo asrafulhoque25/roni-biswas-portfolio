@@ -201,6 +201,15 @@ background-size: cover;
 .manifesto-card.is-active               { background: #ffffff; }
 
 
+@media (max-width:640px) {
+        .manifesto-card{
+        max-height: calc(100% + 30px);
+      }
+  .manifesto-card.is-active .card-content { transform: translateY(30px); }
+.manifesto-card.is-active .card-spacer  { height: 30px; }
+
+}
+
 
  /* service section start  */
 
@@ -218,3 +227,62 @@ background-size: cover;
     background-size: cover;
 }
 /* design process end */
+
+/* counter start */
+.stat-number {
+      color: #1a1fb5;
+      line-height: 1;
+    }
+
+ 
+
+    .stat-card {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+
+   
+/* counter end */
+
+
+
+/* design philosophy start */
+    .num-outline {
+      -webkit-text-stroke-width: 1.5px;
+      -webkit-text-stroke-color: #d0d4f0;
+      color: transparent;
+      transition:
+        color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        -webkit-text-stroke-color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      user-select: none;
+    }
+    .process-card:hover .num-outline {
+      -webkit-text-stroke-color: #222CEE;
+      color: #222CEE;
+    }
+/* design philosophy end */
+
+
+
+
+/* smooth scrooll */
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
