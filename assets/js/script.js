@@ -518,11 +518,45 @@ class _Ripple {
   }
 }
 
-// ✅ window load এর পরে init করো
-// ✅ এইভাবে করো
+
 window.addEventListener('load', () => {
-  // সব image load হওয়ার পরে একটু delay দাও
   setTimeout(() => {
     RippleHover.initAll('.ripple-hover');
   }, 100);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// document.querySelectorAll('h1, h2, h3').forEach(el => {
+//   el.innerHTML = el.textContent.trim().split(/\s+/)
+//     .map(w => `<span class="word"><span>${w}</span></span>`).join(' ');
+//   gsap.set(el, { opacity: 1 });
+
+//   const words = el.querySelectorAll('.word span');
+//   const tl = gsap.timeline({ paused: true });
+
+//   tl.set(words, { transformPerspective: 800 });
+//   tl.from(words, {
+//     rotationX: -90,
+//     opacity: 0,
+//     duration: 0.35,       // fast
+//     ease: 'power3.out',   // snappy feel
+//     stagger: { amount: 0.25 }
+//   });
+
+//   ScrollTrigger.create({ trigger: el, start: 'top bottom', onLeaveBack: () => { tl.progress(0); tl.pause(); } });
+//   ScrollTrigger.create({ trigger: el, start: 'top 85%', onEnter: () => tl.play() });
+// });

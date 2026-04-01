@@ -483,7 +483,7 @@ table {
 /* ── Responsive ── */
 @media (max-width: 640px) {
   .t-img-card {
-    width: 200px;
+    width: 240px;
     height: 400px;
   }
   .t-txt-card {
@@ -588,6 +588,7 @@ line-height: 36px; /* 150% */
 /* wave animation  */
 .ripple-hover {
   position: relative;  
+  display: inline-block;
 }
 
 .ripple-canvas {
@@ -654,3 +655,10 @@ html.lenis body {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+
+
+
+/* h1, h2, h3 { opacity: 0; overflow: hidden; }
+.word { display: inline-block; overflow: hidden; vertical-align: bottom; }
+.word span { display: inline-block; } */
