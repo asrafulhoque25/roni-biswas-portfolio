@@ -255,3 +255,175 @@ gsap.ticker.lagSmoothing(0);
 
 
 
+// testimonial slider
+
+  const splide = new Splide('#testimonial-splide', {
+      type        : 'loop',
+      drag        : 'free',
+      focus       : 'center',
+      perPage     : 2,
+      gap         : '12px',
+      arrows      : false,
+      pagination  : false,
+      autoScroll  : {
+        speed        : 1,
+        pauseOnHover : true,
+        pauseOnFocus : true,
+      },
+      breakpoints : {
+        1536 : { perPage: 2 },
+        1280 : { perPage: 4 },
+        1024 : { perPage: 3, gap: '10px' },
+        768  : { perPage: 2.5 },
+        640  : { perPage: 1.5, gap: '8px' },
+      },
+    });
+
+    if (window.splide && window.splide.Extensions) {
+      splide.mount(window.splide.Extensions);
+    } else {
+      splide.mount();
+    }
+
+    // ── Video hover play ──
+    const videoCards = document.querySelectorAll('.video-card');
+
+    if (videoCards.length > 0) {
+      videoCards.forEach(card => {
+        const video = card.querySelector('.video-element');
+        if (!video) return;
+
+        let isPlaying = false;
+
+        card.addEventListener('mouseenter', function () {
+          if (!isPlaying) {
+            video.currentTime = 0;
+            video.play().catch(err => console.log('Video play error:', err));
+            card.classList.add('is-playing');
+            isPlaying = true;
+          }
+        });
+
+        card.addEventListener('mouseleave', function () {
+          if (isPlaying) {
+            video.pause();
+            video.currentTime = 0;
+            card.classList.remove('is-playing');
+            isPlaying = false;
+          }
+        });
+
+        video.addEventListener('ended', function () {
+          if (isPlaying) {
+            video.currentTime = 0;
+            video.play();
+          }
+        });
+      });
+
+      // Slider move হলে সব video pause করো
+      splide.on('move', function () {
+        videoCards.forEach(card => {
+          const video = card.querySelector('.video-element');
+          if (video) {
+            video.pause();
+            video.currentTime = 0;
+            card.classList.remove('is-playing');
+          }
+        });
+      });
+    }
+
+
+
+    // skill rating box hover effect and scroll
+
+    
+    /* ── Rating box animation per row ─────────── */
+    document.querySelectorAll(".skill-row").forEach((row, rowIndex) => {
+      const rating = parseInt(row.dataset.rating, 10);
+      const boxes  = row.querySelectorAll(".rating-box");
+
+      // Create a GSAP timeline for this row, paused
+      const tl = gsap.timeline({ paused: true });
+
+      boxes.forEach((box, i) => {
+        const isFilled = i < rating;
+
+        if (isFilled) {
+          tl.to(box, {
+            "--fill": "1",
+            duration: 0,
+            onStart: () => {
+              gsap.to(box, {
+                duration: 0.35,
+                ease: "power2.out",
+                onStart: () => {
+                  box.classList.add("filled");
+                  box.style.background = "transparent";
+                }
+              });
+            }
+          }, i * 0.12);   
+        }
+      });
+
+      /* ScrollTrigger for each row */
+      ScrollTrigger.create({
+        trigger: row,
+        start: "top 85%",
+        onEnter: () => {
+          const boxes = row.querySelectorAll(".rating-box");
+          boxes.forEach((box, i) => {
+            const isFilled = i < rating;
+            if (isFilled) {
+              gsap.to(box, {
+                delay: i * 0.13,
+                duration: 0,
+                onComplete: () => {
+                  gsap.fromTo(
+                    box,
+                    { "--scale": 0 },
+                    {
+                      duration: 0.4,
+                      ease: "power3.out",
+                      onStart: () => {
+                        box.classList.add("filled");
+                        box.style.background = "transparent";
+                      }
+                    }
+                  );
+                }
+              });
+            }
+          });
+        },
+        onLeaveBack: () => {
+          // Reset when scrolled back up
+          row.querySelectorAll(".rating-box").forEach(box => {
+            box.classList.remove("filled");
+            box.style.background = "";
+          });
+        }
+      });
+
+      /* ── Hover: re-animate boxes on mouse enter ── */
+      row.addEventListener("mouseenter", () => {
+        const boxes = row.querySelectorAll(".rating-box");
+        boxes.forEach((box, i) => {
+          if (i < rating) {
+            box.classList.remove("filled");
+            box.style.background = "transparent";
+            gsap.delayedCall(i * 0.08, () => {
+              box.classList.add("filled");
+              gsap.fromTo(box, { scale: 0.7, opacity: 0.4 }, {
+                scale: 1,
+                opacity: 1,
+                duration: 0.3,
+                ease: "back.out(2)"
+              });
+            });
+          }
+        });
+      });
+    });
