@@ -208,6 +208,9 @@
   .relative {
     position: relative;
   }
+  .static {
+    position: static;
+  }
   .inset-0 {
     inset: calc(var(--spacing) * 0);
   }
@@ -300,9 +303,6 @@
   }
   .mt-7 {
     margin-top: calc(var(--spacing) * 7);
-  }
-  .mt-8 {
-    margin-top: calc(var(--spacing) * 8);
   }
   .mb-1 {
     margin-bottom: calc(var(--spacing) * 1);
@@ -719,9 +719,6 @@
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
   }
-  .py-5 {
-    padding-block: calc(var(--spacing) * 5);
-  }
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
   }
@@ -745,9 +742,6 @@
   }
   .pb-10 {
     padding-bottom: calc(var(--spacing) * 10);
-  }
-  .pb-37 {
-    padding-bottom: calc(var(--spacing) * 37);
   }
   .pb-\[60px\] {
     padding-bottom: 60px;
@@ -1123,6 +1117,11 @@
   .sm\:mb-6 {
     @media (width >= 40rem) {
       margin-bottom: calc(var(--spacing) * 6);
+    }
+  }
+  .sm\:block {
+    @media (width >= 40rem) {
+      display: block;
     }
   }
   .sm\:grid {
@@ -2199,6 +2198,21 @@ table {
     height: 15px;
     gap: 3px;
   }
+}
+.ripple-hover {
+  position: relative;
+}
+.ripple-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  filter: blur(6px);
+}
+.ripple-hover:hover .ripple-canvas {
+  opacity: 1;
 }
 .footer {
   padding: 85px 0 32px 0;

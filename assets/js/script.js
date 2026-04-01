@@ -427,3 +427,102 @@ gsap.ticker.lagSmoothing(0);
         });
       });
     });
+
+
+
+
+
+    // hover image animation
+class RippleHover {
+  constructor(element, options = {}) {
+    this.el = element;
+    this.canvas = element.querySelector('.ripple-canvas');
+    this.ctx = this.canvas.getContext('2d');
+    this.ripples = [];
+
+    this.settings = {
+      maxSize:        options.maxSize        ?? 80,
+      animationSpeed: options.animationSpeed ?? 4,
+      strokeColor:    options.strokeColor    ?? [148, 217, 255],
+    };
+
+    this._resize();
+    this._bindEvents();
+    this._loop();
+  }
+
+_resize() {
+  const rect = this.el.getBoundingClientRect();
+  
+  this.canvas.width        = rect.width;
+  this.canvas.height       = rect.height;
+  this.canvas.style.width  = rect.width  + 'px';
+  this.canvas.style.height = rect.height + 'px';
+  
+  // ✅ Canvas কে force করো top-left এ বসাতে
+  this.canvas.style.position = 'absolute';
+  this.canvas.style.top      = '0';
+  this.canvas.style.left     = '0';
+}
+
+_bindEvents() {
+  this._onMouseMove = (e) => {
+    const rect = this.el.getBoundingClientRect();
+    
+    // ✅ এইভাবে করো — rect থেকেই relative position নাও
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;   // ← scroll offset automatically handle হয়
+    
+    this.ripples.unshift(
+      new _Ripple(x, y, 2, this.ctx, this.settings)
+    );
+  };
+  this.el.addEventListener('mousemove', this._onMouseMove);
+  window.addEventListener('resize', () => this._resize());
+}
+
+  _loop() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    for (let i = this.ripples.length - 1; i >= 0; i--) {
+      this.ripples[i].update();
+      this.ripples[i].draw();
+      if (this.ripples[i].opacity <= 0) this.ripples.splice(i, 1);
+    }
+    requestAnimationFrame(() => this._loop());
+  }
+
+  static initAll(selector = '.ripple-hover', options = {}) {
+    document.querySelectorAll(selector).forEach(el => new RippleHover(el, options));
+  }
+}
+
+class _Ripple {
+  constructor(x, y, circleSize, ctx, settings) {
+    this.x = x; this.y = y;
+    this.circleSize = circleSize;
+    this.maxSize    = settings.maxSize;
+    this.opacity    = 1;
+    this.ctx        = ctx;
+    this.speed      = settings.animationSpeed;
+    this.color      = settings.strokeColor;
+    this.opacityStep = (this.speed / (this.maxSize - circleSize)) / 2;
+  }
+  update() { this.circleSize += this.speed; this.opacity -= this.opacityStep; }
+  draw() {
+    const [r, g, b] = this.color;
+    this.ctx.beginPath();
+    this.ctx.strokeStyle = `rgba(${r},${g},${b},${this.opacity})`;
+    this.ctx.lineWidth = 1.5;
+    this.ctx.arc(this.x, this.y, this.circleSize, 0, Math.PI * 2);
+    this.ctx.stroke();
+  }
+}
+
+// ✅ window load এর পরে init করো
+// ✅ এইভাবে করো
+window.addEventListener('load', () => {
+  // সব image load হওয়ার পরে একটু delay দাও
+  setTimeout(() => {
+    RippleHover.initAll('.ripple-hover');
+  }, 100);
+});
