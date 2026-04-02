@@ -610,6 +610,39 @@ line-height: 36px; /* 150% */
 
 
 
+
+/* case study tab section  */
+  .tab-btn {
+    background: transparent;
+    color: #000;
+  }
+  .tab-btn.active {
+    background: #1925AA; /* primary color */
+    color: #fff;
+    border-color: #1925AA;
+  }
+  .project-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .project-item.hidden-item {
+    display: none;
+  }
+
+/* case study tab section end  */
+
+
+
+/* case study details start  */
+.project-overview{
+  background-image: url('../images/case-black-bg.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* case study details end  */
+
+
+
 /* footer section start */
 .footer{
   padding: 85px 0 32px 0;
