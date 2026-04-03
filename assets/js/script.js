@@ -565,3 +565,32 @@ window.addEventListener('load', () => {
   });
 
 })();
+
+
+
+//user research bling 
+
+const pings  = [...document.querySelectorAll('[data-ping]')]
+                         .sort((a, b) => +a.dataset.ping - +b.dataset.ping);
+
+        const BETWEEN = 300;   // gap between each card (ms)
+        const PAUSE   = 4000;  // idle time after full sequence (ms)
+
+        function fire(el) {
+            el.classList.remove('ping-active');
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+                el.classList.add('ping-active');
+            }));
+            el.addEventListener('animationend', () => {
+                el.classList.remove('ping-active');
+            }, { once: true });
+        }
+
+        function runSequence() {
+            pings.forEach((el, i) => setTimeout(() => fire(el), i * BETWEEN));
+            // schedule next sequence after all pings finish + PAUSE
+            setTimeout(runSequence, pings.length * BETWEEN + PAUSE);
+        }
+
+        // Small initial delay so page is fully rendered
+        setTimeout(runSequence, 600);
