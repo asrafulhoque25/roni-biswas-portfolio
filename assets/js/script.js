@@ -2,17 +2,17 @@
 const navbar = document.getElementById('navbar');
 
 if (navbar) {
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) {
-            navbar.classList.add('backdrop-blur-md', 'bg-[#070d1e]/90', 'shadow-lg');
-            navbar.classList.remove('py-6', 'lg:py-10');
-            navbar.classList.add('py-4');
-        } else {
-            navbar.classList.remove('backdrop-blur-md', 'bg-[#070d1e]/90', 'shadow-lg');
-            navbar.classList.remove('py-4');
-            navbar.classList.add('py-6', 'lg:py-10');
-        }
-    });
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      navbar.classList.add('backdrop-blur-md', 'bg-[#070d1e]/90', 'shadow-lg');
+      navbar.classList.remove('py-6', 'lg:py-10');
+      navbar.classList.add('py-4');
+    } else {
+      navbar.classList.remove('backdrop-blur-md', 'bg-[#070d1e]/90', 'shadow-lg');
+      navbar.classList.remove('py-4');
+      navbar.classList.add('py-6', 'lg:py-10');
+    }
+  });
 }
 
 // ── Mobile menu toggle ──
@@ -20,43 +20,43 @@ const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
 
 if (hamburger && mobileMenu) {
-    const hamTop = hamburger.querySelector('.ham-top');
-    const hamMid = hamburger.querySelector('.ham-mid');
-    const hamBot = hamburger.querySelector('.ham-bot');
-    let menuOpen = false;
+  const hamTop = hamburger.querySelector('.ham-top');
+  const hamMid = hamburger.querySelector('.ham-mid');
+  const hamBot = hamburger.querySelector('.ham-bot');
+  let menuOpen = false;
 
-    const toggleMenu = () => {
-        menuOpen = !menuOpen;
-        if (menuOpen) {
-            mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
-            hamTop.style.transform = 'translateY(7px) rotate(45deg)';
-            hamMid.style.opacity = '0';
-            hamMid.style.transform = 'scaleX(0)';
-            hamBot.style.width = '24px';
-            hamBot.style.transform = 'translateY(-7px) rotate(-45deg)';
-            // Adding a background to navbar when menu is open (if not scrolled)
-            navbar.classList.add('bg-[#070d1e]');
-        } else {
-            mobileMenu.style.maxHeight = '0';
-            hamTop.style.transform = '';
-            hamMid.style.opacity = '';
-            hamMid.style.transform = '';
-            hamBot.style.width = '';
-            hamBot.style.transform = '';
-            if (window.scrollY <= 20) {
-                navbar.classList.remove('bg-[#070d1e]');
-            }
-        }
-    };
+  const toggleMenu = () => {
+    menuOpen = !menuOpen;
+    if (menuOpen) {
+      mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+      hamTop.style.transform = 'translateY(7px) rotate(45deg)';
+      hamMid.style.opacity = '0';
+      hamMid.style.transform = 'scaleX(0)';
+      hamBot.style.width = '24px';
+      hamBot.style.transform = 'translateY(-7px) rotate(-45deg)';
+      // Adding a background to navbar when menu is open (if not scrolled)
+      navbar.classList.add('bg-[#070d1e]');
+    } else {
+      mobileMenu.style.maxHeight = '0';
+      hamTop.style.transform = '';
+      hamMid.style.opacity = '';
+      hamMid.style.transform = '';
+      hamBot.style.width = '';
+      hamBot.style.transform = '';
+      if (window.scrollY <= 20) {
+        navbar.classList.remove('bg-[#070d1e]');
+      }
+    }
+  };
 
-    hamburger.addEventListener('click', toggleMenu);
+  hamburger.addEventListener('click', toggleMenu);
 
-    // Close menu on link click
-    mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (menuOpen) toggleMenu();
-        });
+  // Close menu on link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (menuOpen) toggleMenu();
     });
+  });
 }
 
 // ── Manifesto cards hover effect ──
@@ -102,17 +102,17 @@ if (svcRows.length > 0) {
 
   // Hover animations
   svcRows.forEach(row => {
-    const bg      = row.querySelector('.svc-bg');
+    const bg = row.querySelector('.svc-bg');
     const overlay = row.querySelector('.svc-overlay');
     const shimmer = row.querySelector('.svc-shimmer');
-    const name    = row.querySelector('.svc-name');
-    const descs   = row.querySelectorAll('[class*="text-white/60"]');
-    const num     = row.querySelector('.svc-num');
+    const name = row.querySelector('.svc-name');
+    const descs = row.querySelectorAll('[class*="text-white/60"]');
+    const num = row.querySelector('.svc-num');
 
     row.addEventListener('mouseenter', () => {
       gsap.killTweensOf([bg, overlay, shimmer, name]);
-      gsap.to(bg,      { opacity: 1, scale: 1,    duration: 0.65, ease: 'power2.out' });
-      gsap.to(overlay, { opacity: 1,               duration: 0.5,  ease: 'power2.out' });
+      gsap.to(bg, { opacity: 1, scale: 1, duration: 0.65, ease: 'power2.out' });
+      gsap.to(overlay, { opacity: 1, duration: 0.5, ease: 'power2.out' });
       gsap.fromTo(shimmer,
         { left: '-70%', opacity: 1 },
         { left: '120%', opacity: 1, duration: 0.75, ease: 'power1.inOut' }
@@ -123,11 +123,11 @@ if (svcRows.length > 0) {
 
     row.addEventListener('mouseleave', () => {
       gsap.killTweensOf([bg, overlay, name, ...descs, num]);
-      gsap.to(bg,      { opacity: 0, scale: 1.08,       duration: 0.55, ease: 'power2.inOut' });
-      gsap.to(overlay, { opacity: 0,                     duration: 0.4,  ease: 'power2.in' });
-      gsap.to(name,    { y: 0,                           duration: 0.35, ease: 'power2.out' });
-      gsap.to(descs,   { color: 'rgba(255,255,255,0.6)', duration: 0.35 });
-      gsap.to(num,     { color: 'rgba(255,255,255,0.5)', duration: 0.35 });
+      gsap.to(bg, { opacity: 0, scale: 1.08, duration: 0.55, ease: 'power2.inOut' });
+      gsap.to(overlay, { opacity: 0, duration: 0.4, ease: 'power2.in' });
+      gsap.to(name, { y: 0, duration: 0.35, ease: 'power2.out' });
+      gsap.to(descs, { color: 'rgba(255,255,255,0.6)', duration: 0.35 });
+      gsap.to(num, { color: 'rgba(255,255,255,0.5)', duration: 0.35 });
     });
   });
 }
@@ -155,7 +155,7 @@ if (statsSection) {
 
     document.querySelectorAll('.counter').forEach((el, i) => {
       const target = parseInt(el.dataset.target);
-      const pad    = parseInt(el.dataset.pad || 0);
+      const pad = parseInt(el.dataset.pad || 0);
 
       const obj = { val: 0 };
       gsap.to(obj, {
@@ -195,7 +195,7 @@ if (statsSection) {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const q    = (sel) => section.querySelector(sel);
+  const q = (sel) => section.querySelector(sel);
   const qAll = (sel) => section.querySelectorAll(sel);
 
   const designTitle = q('.design-title');
@@ -248,24 +248,24 @@ const splideEl = document.getElementById('testimonial-splide');
 
 if (splideEl) {
   const splide = new Splide('#testimonial-splide', {
-    type       : 'loop',
-    drag       : 'free',
-    focus      : 'center',
-    perPage    : 2,
-    gap        : '12px',
-    arrows     : false,
-    pagination : false,
-    autoScroll : {
-      speed        : 1,
-      pauseOnHover : true,
-      pauseOnFocus : true,
+    type: 'loop',
+    drag: 'free',
+    focus: 'center',
+    perPage: 2,
+    gap: '12px',
+    arrows: false,
+    pagination: false,
+    autoScroll: {
+      speed: 1,
+      pauseOnHover: true,
+      pauseOnFocus: true,
     },
     breakpoints: {
       1536: { perPage: 2 },
       1280: { perPage: 4 },
       1024: { perPage: 3, gap: '10px' },
-      768 : { perPage: 2.5 },
-      640 : { perPage: 1.5, gap: '8px' },
+      768: { perPage: 2.5 },
+      640: { perPage: 1.5, gap: '8px' },
     },
   });
 
@@ -332,7 +332,7 @@ const skillRows = document.querySelectorAll('.skill-row');
 if (skillRows.length > 0) {
   skillRows.forEach((row) => {
     const rating = parseInt(row.dataset.rating, 10);
-    const boxes  = row.querySelectorAll('.rating-box');
+    const boxes = row.querySelectorAll('.rating-box');
 
     const tl = gsap.timeline({ paused: true });
 
@@ -421,15 +421,15 @@ if (skillRows.length > 0) {
 // ── Ripple hover effect ──
 class RippleHover {
   constructor(element, options = {}) {
-    this.el     = element;
+    this.el = element;
     this.canvas = element.querySelector('.ripple-canvas');
-    this.ctx    = this.canvas.getContext('2d');
+    this.ctx = this.canvas.getContext('2d');
     this.ripples = [];
 
     this.settings = {
-      maxSize        : options.maxSize        ?? 80,
-      animationSpeed : options.animationSpeed ?? 4,
-      strokeColor    : options.strokeColor    ?? [148, 217, 255],
+      maxSize: options.maxSize ?? 80,
+      animationSpeed: options.animationSpeed ?? 4,
+      strokeColor: options.strokeColor ?? [148, 217, 255],
     };
 
     this._resize();
@@ -440,13 +440,13 @@ class RippleHover {
   _resize() {
     const rect = this.el.getBoundingClientRect();
 
-    this.canvas.width        = rect.width;
-    this.canvas.height       = rect.height;
-    this.canvas.style.width  = rect.width  + 'px';
+    this.canvas.width = rect.width;
+    this.canvas.height = rect.height;
+    this.canvas.style.width = rect.width + 'px';
     this.canvas.style.height = rect.height + 'px';
     this.canvas.style.position = 'absolute';
-    this.canvas.style.top      = '0';
-    this.canvas.style.left     = '0';
+    this.canvas.style.top = '0';
+    this.canvas.style.left = '0';
   }
 
   _bindEvents() {
@@ -480,14 +480,14 @@ class RippleHover {
 
 class _Ripple {
   constructor(x, y, circleSize, ctx, settings) {
-    this.x          = x;
-    this.y          = y;
+    this.x = x;
+    this.y = y;
     this.circleSize = circleSize;
-    this.maxSize    = settings.maxSize;
-    this.opacity    = 1;
-    this.ctx        = ctx;
-    this.speed      = settings.animationSpeed;
-    this.color      = settings.strokeColor;
+    this.maxSize = settings.maxSize;
+    this.opacity = 1;
+    this.ctx = ctx;
+    this.speed = settings.animationSpeed;
+    this.color = settings.strokeColor;
     this.opacityStep = (this.speed / (this.maxSize - circleSize)) / 2;
   }
   update() { this.circleSize += this.speed; this.opacity -= this.opacityStep; }
@@ -514,7 +514,7 @@ window.addEventListener('load', () => {
 
 (function initTabFilter() {
   const tabButtons = document.querySelectorAll('.tab-btn');
-  const grid       = document.getElementById('project-grid');
+  const grid = document.getElementById('project-grid');
 
   if (!tabButtons.length || !grid) return;
 
@@ -535,8 +535,8 @@ window.addEventListener('load', () => {
     // Transition 
     matched.forEach(item => {
       item.style.transition = 'none';
-      item.style.opacity    = '0';
-      item.style.transform  = 'translateY(16px)';
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(16px)';
       grid.appendChild(item);
     });
 
@@ -545,8 +545,8 @@ window.addEventListener('load', () => {
       requestAnimationFrame(() => {
         matched.forEach(item => {
           item.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-          item.style.opacity    = '1';
-          item.style.transform  = 'translateY(0)';
+          item.style.opacity = '1';
+          item.style.transform = 'translateY(0)';
         });
       });
     });
@@ -569,27 +569,27 @@ window.addEventListener('load', () => {
 
 //user research bling 
 
-const pings  = [...document.querySelectorAll('[data-ping]')]
-                         .sort((a, b) => +a.dataset.ping - +b.dataset.ping);
+const pings = [...document.querySelectorAll('[data-ping]')]
+  .sort((a, b) => +a.dataset.ping - +b.dataset.ping);
 
-        const BETWEEN = 300;   // gap between each card (ms)
-        const PAUSE   = 4000;  // idle time after full sequence (ms)
+const BETWEEN = 300;   // gap between each card (ms)
+const PAUSE = 4000;  // idle time after full sequence (ms)
 
-        function fire(el) {
-            el.classList.remove('ping-active');
-            requestAnimationFrame(() => requestAnimationFrame(() => {
-                el.classList.add('ping-active');
-            }));
-            el.addEventListener('animationend', () => {
-                el.classList.remove('ping-active');
-            }, { once: true });
-        }
+function fire(el) {
+  el.classList.remove('ping-active');
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    el.classList.add('ping-active');
+  }));
+  el.addEventListener('animationend', () => {
+    el.classList.remove('ping-active');
+  }, { once: true });
+}
 
-        function runSequence() {
-            pings.forEach((el, i) => setTimeout(() => fire(el), i * BETWEEN));
-            // schedule next sequence after all pings finish + PAUSE
-            setTimeout(runSequence, pings.length * BETWEEN + PAUSE);
-        }
+function runSequence() {
+  pings.forEach((el, i) => setTimeout(() => fire(el), i * BETWEEN));
+  // schedule next sequence after all pings finish + PAUSE
+  setTimeout(runSequence, pings.length * BETWEEN + PAUSE);
+}
 
-        // Small initial delay so page is fully rendered
-        setTimeout(runSequence, 600);
+// Small initial delay so page is fully rendered
+setTimeout(runSequence, 600);
