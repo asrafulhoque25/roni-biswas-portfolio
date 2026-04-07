@@ -311,7 +311,7 @@ if (splideEl) {
       });
     });
 
-    // Slider move হলে সব video pause করো
+    // Slider move 
     splide.on('move', function () {
       videoCards.forEach(card => {
         const video = card.querySelector('.video-element');
@@ -532,7 +532,7 @@ window.addEventListener('load', () => {
       ? allItems
       : allItems.filter(item => item.dataset.category === filter);
 
-    // Transition বন্ধ রেখে initial (invisible) state এ DOM এ বসাও
+    // Transition 
     matched.forEach(item => {
       item.style.transition = 'none';
       item.style.opacity    = '0';
@@ -540,7 +540,7 @@ window.addEventListener('load', () => {
       grid.appendChild(item);
     });
 
-    // Double rAF — browser কে layout calculate করার সুযোগ দাও, তারপর animate in
+    // Double rAF —
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         matched.forEach(item => {
@@ -552,7 +552,7 @@ window.addEventListener('load', () => {
     });
   }
 
-  // Page load এ প্রথমবার সব দেখাও
+  // Page load 
   applyFilter('all');
 
   tabButtons.forEach(btn => {
