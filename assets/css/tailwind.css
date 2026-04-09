@@ -130,6 +130,219 @@ table {
 /* main css here */
 
 
+
+/* naavbar css here */
+/* ============================================================
+   NAVBAR STYLES
+   ============================================================ */
+
+/* ── WRAPPER ── */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 50;
+  padding: 24px 0;
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 1024px) {
+  #navbar { padding: 40px 0; }
+}
+
+/* Scroll state — JS adds .navbar--scrolled */
+#navbar.navbar--scrolled {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(7, 13, 30, 0.9);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  padding: 16px 0;
+}
+
+/* Mobile menu open + not scrolled — JS adds .navbar--menu-open */
+#navbar.navbar--menu-open:not(.navbar--scrolled) {
+  background-color: #070d1e;
+}
+
+/* ── INNER ROW ── */
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* ── LOGO ── */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.navbar-logo img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.navbar-logo span {
+  font-size: 18px;
+  font-weight: 500;
+  color: #B2B3BD;
+}
+
+@media (min-width: 1024px) {
+  .navbar-logo span { font-size: 20px; }
+}
+
+/* ── DESKTOP NAV LINKS ── */
+.navbar-links {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  gap: 32px;
+}
+
+@media (min-width: 768px) {
+  .navbar-links { display: flex; }
+}
+
+.navbar-links li {
+  margin: 0;
+}
+
+.navbar-links li a {
+  font-size: 16px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+@media (min-width: 1024px) {
+  .navbar-links li a { font-size: 18px; }
+}
+
+.navbar-links li a:hover {
+  color: #B2B3BD;
+}
+
+/* ── RIGHT ACTIONS ── */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Download CV */
+.navbar-cv {
+  display: none;
+  font-size: 16px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .navbar-cv { display: block; }
+}
+
+@media (min-width: 1024px) {
+  .navbar-cv { font-size: 18px; }
+}
+
+.navbar-cv:hover {
+  color: #B2B3BD;
+}
+
+/* ── HAMBURGER BUTTON ── */
+#hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+
+@media (min-width: 768px) {
+  #hamburger { display: none; }
+}
+
+/* Hamburger bars */
+.ham-top,
+.ham-mid,
+.ham-bot {
+  position: absolute;
+  display: block;
+  height: 1.5px;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.ham-top { width: 24px; transform: translateY(-7px); }
+.ham-mid { width: 24px; }
+.ham-bot { width: 16px; transform: translateY(7px); }
+
+/* ── MOBILE MENU ── */
+#mobile-menu {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s ease-in-out;
+  background-color: rgba(0, 3, 35, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+@media (min-width: 768px) {
+  #mobile-menu { display: none; }
+}
+
+/* Mobile menu inner */
+.mobile-menu-inner {
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile nav links */
+.mobile-menu-inner ul{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.mobile-menu-inner ul li a {
+  font-size: 18px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.mobile-menu-inner ul li a:hover {
+  color: #B2B3BD;
+}
+/* navbar css here */
+
+
 /* common button */
 @keyframes fadeUp {
   from {
@@ -815,6 +1028,258 @@ table {
 
 }
 
+
+/* ============================================================
+   FOOTER STYLES
+   Usage: WordPress theme - style.css বা footer.css এ paste করো
+   ============================================================ */
+
+/* ── WRAPPER ── */
+.footer {
+  width: 100%;
+  background-color: #000202;
+  overflow: hidden;
+}
+
+
+/* ── MAIN GRID (Left + Right) ── */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+
+@media (min-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 520px 1fr;
+    gap: 0;
+  }
+}
+
+/* ============================================================
+   LEFT COLUMN
+   ============================================================ */
+.footer-left {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-content: start;
+}
+
+/* Headline */
+.footer-headline {
+  font-family: 'Anton', sans-serif;
+  font-size: 36px;
+  line-height: 110%;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .footer-headline { font-size: 42px; }
+}
+
+@media (min-width: 768px) {
+  .footer-headline { font-size: 48px; }
+}
+
+/* Social Icons */
+.footer-social {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .footer-social { gap: 12px; }
+}
+
+.footer-social li {
+  margin: 0;
+}
+
+.footer-social a {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #262828;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-social a:hover {
+  background-color: #ffffff;
+  color: #000000;
+  transform: scale(1.1);
+}
+
+.footer-social a svg path {
+  fill: #ffffff;
+  transition: fill 0.2s ease;
+}
+
+.footer-social a:hover svg path {
+  fill: #000000;
+}
+
+/* Footer Photo */
+.footer-photo {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+@media (min-width: 1024px) {
+  .footer-photo { margin-top: 64px; }
+}
+
+.footer-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================================
+   RIGHT COLUMN
+   ============================================================ */
+.footer-right {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 1024px) {
+  .footer-right {
+    gap: 80px;
+    padding-left: 64px;
+  }
+}
+
+/* ── NAV GRID (3 Columns: Services / Connect / Contact) ── */
+.footer-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px 24px;
+}
+
+@media (min-width: 640px) {
+  .footer-nav-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+/* Nav Column Heading */
+.footer-nav-col h3 {
+  font-family: 'Anton', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+}
+
+@media (min-width: 640px) {
+  .footer-nav-col h3 { font-size: 20px; }
+}
+
+@media (min-width: 768px) {
+  .footer-nav-col h3 { font-size: 24px; }
+}
+
+/* Nav List */
+.footer-nav-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+/* Nav List Items */
+.footer-nav-col ul li {
+  margin: 0;
+}
+
+/* Nav Links */
+.footer-nav-col ul li a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 16px;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .footer-nav-col ul li a { font-size: 18px; }
+}
+
+.footer-nav-col ul li a:hover {
+  color: #ffffff;
+}
+
+/* Plain text items (no link) */
+.footer-nav-col ul li span {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+}
+
+@media (min-width: 640px) {
+  .footer-nav-col ul li span { font-size: 18px; }
+}
+
+/* ── GIANT BRAND NAME ── */
+.footer-brand {
+  align-self: end;
+  overflow: hidden;
+  margin-top: 24px;
+}
+
+@media (min-width: 1024px) {
+  .footer-brand { margin-top: 0; }
+}
+
+.footer-brand h3 {
+  font-family: 'Anton', sans-serif;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-size: 80px;
+  line-height: 110%;
+  margin: 0;
+}
+
+@media (min-width: 640px)  { .footer-brand h3 { font-size: 100px; } }
+@media (min-width: 768px)  { .footer-brand h3 { font-size: 120px; } }
+@media (min-width: 1024px) { .footer-brand h3 { font-size: 160px; } }
+
+/* ── BOTTOM BAR ── */
+.footer-bottom {
+  border-top: 1px solid #D9D9D9;
+  margin-top: 16px;
+  padding: 12px 0;
+}
+
+@media (min-width: 768px) {
+  .footer-bottom {
+    margin-top: 32px;
+    padding: 20px 0;
+  }
+}
+
+.footer-bottom p {
+  color: #BFC0C0;
+  font-size: 12px;
+  margin: 0;
+}
+
+@media (min-width: 640px) { .footer-bottom p { font-size: 14px; } }
+@media (min-width: 768px) { .footer-bottom p { font-size: 18px; } }
 /* footer section end */
 
 

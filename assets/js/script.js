@@ -4,13 +4,9 @@ const navbar = document.getElementById('navbar');
 if (navbar) {
   window.addEventListener('scroll', () => {
     if (window.scrollY > 20) {
-      navbar.classList.add('backdrop-blur-md', 'bg-[#070d1e]/90', 'shadow-lg');
-      navbar.classList.remove('py-6', 'lg:py-10');
-      navbar.classList.add('py-4');
+      navbar.classList.add('navbar--scrolled');
     } else {
-      navbar.classList.remove('backdrop-blur-md', 'bg-[#070d1e]/90', 'shadow-lg');
-      navbar.classList.remove('py-4');
-      navbar.classList.add('py-6', 'lg:py-10');
+      navbar.classList.remove('navbar--scrolled');
     }
   });
 }
@@ -27,37 +23,46 @@ if (hamburger && mobileMenu) {
 
   const toggleMenu = () => {
     menuOpen = !menuOpen;
+
     if (menuOpen) {
+      // Open menu
       mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
-      hamTop.style.transform = 'translateY(7px) rotate(45deg)';
+      navbar.classList.add('navbar--menu-open');
+
+      // Animate hamburger → X
+      hamTop.style.transform = 'translateY(0px) rotate(45deg)';
       hamMid.style.opacity = '0';
       hamMid.style.transform = 'scaleX(0)';
       hamBot.style.width = '24px';
-      hamBot.style.transform = 'translateY(-7px) rotate(-45deg)';
-      // Adding a background to navbar when menu is open (if not scrolled)
-      navbar.classList.add('bg-[#070d1e]');
+      hamBot.style.transform = 'translateY(-0px) rotate(-45deg)';
     } else {
+      // Close menu
       mobileMenu.style.maxHeight = '0';
+      navbar.classList.remove('navbar--menu-open');
+
+      // Reset hamburger bars
       hamTop.style.transform = '';
       hamMid.style.opacity = '';
       hamMid.style.transform = '';
       hamBot.style.width = '';
       hamBot.style.transform = '';
-      if (window.scrollY <= 20) {
-        navbar.classList.remove('bg-[#070d1e]');
-      }
     }
   };
 
   hamburger.addEventListener('click', toggleMenu);
 
-  // Close menu on link click
+  // Close menu on mobile link click
   mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       if (menuOpen) toggleMenu();
     });
   });
 }
+
+
+
+
+
 
 // ── Manifesto cards hover effect ──
 const cards = document.querySelectorAll('.manifesto-card');
@@ -84,6 +89,7 @@ if (cards.length > 0) {
     });
   });
 }
+
 
 
 // ── Service rows ──
@@ -269,11 +275,7 @@ if (splideEl) {
     },
   });
 
-  if (window.Splide && window.Splide.Extensions) {
-    splide.mount(window.Splide.Extensions);
-  } else {
-    splide.mount();
-  }
+ splide.mount(window.splide.Extensions);
 
   // ── Video hover play ──
   const videoCards = document.querySelectorAll('.video-card');
